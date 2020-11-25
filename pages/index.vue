@@ -1,6 +1,6 @@
 <template>
   <div>
-    Hello world!
+    <h1>Hello world!</h1>
     asyncData: {{ asyncData }}
   </div>
 </template>
