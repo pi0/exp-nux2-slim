@@ -9,6 +9,7 @@ VueRouter.prototype.createRoute = function() {
     path: '/',
     matched: [
       {
+        path: '/',
         components: [this.options.routes[0].component],
         instances: []
       }
@@ -17,7 +18,7 @@ VueRouter.prototype.createRoute = function() {
 }
 
 VueRouter.prototype.push = function () {
-  this.route = this.createRoute()
+  this.currentRoute = this.createRoute()
 }
 
 VueRouter.prototype.resolve = function () {
@@ -44,14 +45,13 @@ VueRouter.install = function (Vue) {
   })
 
   Object.defineProperty(Vue.prototype, '$route', {
-    get: function get() {return this.$router.route }
+    get: function get() { return this.$router.currentRoute }
   })
 
   Vue.component('routerView', {
     functional: true,
     render(createElement, context) {
-      console.log(context.children)
-      return createElement('div', context.children)
+      return createElement(context.parent.$route.matched[0].components[0])
     }
   })
 }

@@ -1,11 +1,11 @@
 const featuresToDisable = [
-  'meta',
-  'layouts',
-  'middleware',
-  'transitions',
-  'deprecations',
-  'validate',
-  'clientPrefetch'
+  // 'meta',
+  // 'layouts',
+  // 'middleware',
+  // 'transitions',
+  // 'deprecations',
+  // 'validate',
+  // 'clientPrefetch'
 ]
 
 export default function () {
