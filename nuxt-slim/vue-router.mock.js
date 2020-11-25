@@ -1,28 +1,33 @@
 export default function VueRouter(options = {}) {
   this.options = options
-  this.route = createRoute()
+  this.push()
 }
 
-function createRoute() {
+VueRouter.prototype.createRoute = function() {
   return {
     fullPath: '/',
     path: '/',
-    matched: []
+    matched: [
+      {
+        components: [this.options.routes[0].component],
+        instances: []
+      }
+    ]
   }
 }
 
 VueRouter.prototype.push = function () {
-  this.route = createRoute()
+  this.route = this.createRoute()
 }
 
 VueRouter.prototype.resolve = function () {
   return {
-    route: createRoute()
+    route: this.createRoute()
   }
 }
 
 VueRouter.prototype.match = function () {
-  return createRoute()
+  return this.createRoute()
 }
 
 VueRouter.prototype.beforeEach = () => {}
@@ -45,6 +50,7 @@ VueRouter.install = function (Vue) {
   Vue.component('routerView', {
     functional: true,
     render(createElement, context) {
+      console.log(context.children)
       return createElement('div', context.children)
     }
   })
