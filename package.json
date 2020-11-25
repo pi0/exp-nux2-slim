@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "start": "nuxt start",
+    "analyze": "nuxt build --analyze"
+  },
+  "devDependencies": {
+    "nuxt": "^2.14.7"
+  }
+}
